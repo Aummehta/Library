@@ -9,7 +9,7 @@ let books = [
     }
 ]
 
-let bookRecord = [
+let borrowBook = [
     {
         user: "Jay",
         bookId: 1,
@@ -29,7 +29,7 @@ function generateId() {
 }
 
 
-let createId=generateId();
+let createId = generateId();
 
 function addBook(book) {
     let newBook = {
@@ -46,7 +46,7 @@ addBook(
         author: "Napoleon Hill",
         genre: "Self-help",
         rating: 4.5,
-        isAvailable: false
+        isAvailable: true
     }
 );
 
@@ -62,6 +62,15 @@ function removeBook(id) {
 removeBook("id-1");
 
 
+function borrowedBook(user, id) {
+    let isFound = books.find(book => book.id === id)
+                        ? books.some(book => book.isAvailable)
+                        : false
 
+    let newBorrowBook = isFound ? { username : user , Bookid : id , Borrowdate : new Date() , returnDate : null } : "Not Available"
 
+    console.log(newBorrowBook)
+}
+
+borrowedBook("Aum" , "id-2");
 
